@@ -5,6 +5,10 @@ namespace rushi.db;
 entity Books: cuid, managed{
     Title: String;
     Author: Association to Authors;
+    genre: String;
+    publishedAt: Date;
+    pages: Integer;
+    price: Decimal(9,2);
     Chapter: Composition of many Chapters on Chapter.book = $self;
 }
 
