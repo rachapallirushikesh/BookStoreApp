@@ -1,0 +1,3 @@
+book_ID,ID,number,createdAt,createdBy,modifiedAt,modifiedBy
+30760895-c058-4e0d-8572-e360998d14ad,13436897-32ee-40f6-a266-bcd9bf831fe7,70,2006-05-24T00:00:00.000Z,createdBy.7zzz5@example.net,2007-02-04T00:00:00.000Z,modifiedBy.7zzz5@example.org
+30760895-c058-4e0d-8572-e360998d14ad,13436898-65a7-49d0-8fa7-99176eae9d53,22,2011-01-06T00:00:00.000Z,createdBy.7zzz6@example.com,2010-10-27T00:00:00.000Z,modifiedBy.7zzz6@example.net
