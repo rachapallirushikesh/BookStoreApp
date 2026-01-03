@@ -129,7 +129,8 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/BookSet"
+              "contextPath": "/BookSet",
+              "sectionLayout": "Page"
             }
           }
         }
