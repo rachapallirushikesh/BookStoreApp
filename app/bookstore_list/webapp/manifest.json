@@ -49,7 +49,8 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.fe.core": {}
       }
     },
     "contentDensities": {
@@ -130,7 +131,8 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/BookSet",
-              "sectionLayout": "Page"
+              "sectionLayout": "Page",
+              "navigation": {}
             }
           }
         }

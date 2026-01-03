@@ -9,7 +9,19 @@ entity Books: cuid, managed{
     publishedAt: Date;
     pages: Integer;
     price: Decimal(9,2);
+    stock: Integer;
+    status: Association to Bookstockstatus;
     Chapter: Composition of many Chapters on Chapter.book = $self;
+}
+
+entity Bookstockstatus{
+    key code: String(1) enum{
+        Avaialable = 'A';
+        Low_Stock = 'L';
+        Unavailable = 'U';
+    };
+    criticality: Integer;
+    displayText: String;
 }
 
 entity Authors: cuid, managed{

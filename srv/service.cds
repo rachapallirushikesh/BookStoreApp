@@ -5,4 +5,5 @@ service BookstoreService @(path: 'BookstoreService') {
     entity BookSet as projection on db.Books;
     entity AuthorSet as projection on db.Authors;
     entity ChapterSet as projection on db.Chapters;
+    entity BookStatusCode as projection on db.Bookstockstatus;
 }

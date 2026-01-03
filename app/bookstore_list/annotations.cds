@@ -18,6 +18,16 @@ annotate service.BookSet with @(
                 Label : 'price',
                 Value : price,
             },
+            {
+                $Type : 'UI.DataField',
+                Value : stock,
+                Label : 'stock',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : status_code,
+                Label : 'status_code',
+            },
         ],
     },
     UI.Facets : [
@@ -41,6 +51,13 @@ annotate service.BookSet with @(
         },
     ],
     UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Value : status_code,
+            Label : 'Status',
+            Criticality : status.criticality,
+            CriticalityRepresentation : #WithIcon,
+        },
         {
             $Type : 'UI.DataField',
             Label : 'Book Name',
@@ -71,10 +88,14 @@ annotate service.BookSet with @(
             Label : 'Created At',
             Value : createdAt,
         },
+        {
+            $Type : 'UI.DataField',
+            Value : stock,
+            Label : 'Stock',
+        },
     ],
     UI.SelectionFields : [
-        ID,
-        price,
+        status_code,
     ],
     UI.HeaderInfo : {
         TypeName : 'Book',
@@ -156,6 +177,129 @@ annotate service.ChapterSet with @(
             Value : book.Chapter.number,
             Label : 'number',
         },
-    ]
+    ],
+    UI.LineItem #tableMacro : [
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.title,
+            Label : 'title',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.pages,
+            Label : 'pages',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.number,
+            Label : 'number',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.ID,
+            Label : 'ID',
+        },
+    ],
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Genetal Information',
+            ID : 'GenetalInformation',
+            Target : '@UI.FieldGroup#GenetalInformation',
+        },
+    ],
+    UI.FieldGroup #GenetalInformation : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : book.Chapter.ID,
+                Label : 'ID',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : book.Chapter.number,
+                Label : 'number',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : book.Chapter.pages,
+                Label : 'pages',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : book.Chapter.title,
+                Label : 'title',
+            },
+        ],
+    },
+    UI.HeaderInfo : {
+        TypeName : 'Chapter',
+        TypeNamePlural : 'Chapters',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : ID,
+        },
+    },
+    UI.LineItem #tableMacro1 : [
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.pages,
+            Label : 'pages',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.title,
+            Label : 'title',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.number,
+            Label : 'number',
+        },
+    ],
+    UI.LineItem #tableMacro2 : [
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.ID,
+            Label : 'ID',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.modifiedAt,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.title,
+            Label : 'title',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : book.Chapter.pages,
+            Label : 'pages',
+        },
+    ],
 );
+
+annotate service.BookSet with {
+    status @(
+        Common.Label : 'Status',
+        Common.Text : status.displayText,
+        Common.Text.@UI.TextArrangement : #TextOnly,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'BookStatusCode',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : status_code,
+                    ValueListProperty : 'code',
+                },
+            ],
+            Label : 'Status',
+        },
+        Common.ValueListWithFixedValues : true,
+        Common.ExternalID : status.displayText,
+        )
+};
 
